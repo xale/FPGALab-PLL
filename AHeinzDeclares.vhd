@@ -23,6 +23,12 @@ package AHeinzDeclares is
 	type DigitROM is array(natural range <>) of std_logic_vector(6 downto 0);
 	
 ----------------------------------------------------------------------------------
+	
+	-- Attributes
+	-- Initial value of signal/register at reset (Xilinx attribute)
+	attribute INIT	: string;
+	
+----------------------------------------------------------------------------------
 
 	-- Constants
 	-- Basic digital signal values
@@ -216,6 +222,27 @@ package AHeinzDeclares is
 		
 		-- Write-complete signal, from DRAM controller
 		writeDone		: in	std_logic
+	);
+	end component;
+	
+	-- 250kHz-range second-order phase-locked loop
+	component PhaseLockedLoop250kHz
+	port
+	(
+		-- Internal (i.e., FPGA-local) 100 MHz sampling clock
+		clk100MHz	: in	std_logic;
+		
+		-- Reset
+		reset		: in	std_logic;
+		
+		-- External signal, with which this entity will attempt to synchronize
+		lockSignal_external	: in	std_logic;
+		
+		-- Lock-enable; if clear, this entity is a pass-through for the external signal
+		lockEnable	: in	std_logic;
+		
+		-- Output signal
+		signalOut	: out	std_logic
 	);
 	end component;
 	
