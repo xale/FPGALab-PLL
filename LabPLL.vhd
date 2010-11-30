@@ -40,12 +40,42 @@ port
 	fceb	: out	std_logic;
 	
 	-- PLL output signal
-	sig2	: out	std_logic
+	sig3	: out	std_logic
 );
 end LabPLL;
 
 architecture Structural of LabPLL is
 	
+	-- Internal signals
+	-- Inverted (active-high) reset
+	signal reset	: std_logic;
+	
 begin
+	
+	-- Tie flash-controller off
+	fceb <= AL_OFF;
+	
+	-- Invert external reset signal
+	reset <= NOT swrst;
+	
+	-- Instantiate PLL component
+	PLL: PhaseLockedLoop250kHz
+	port map
+	(
+		-- Connect master clock
+		clk100MHz => clk100,
+		
+		-- Connect global reset
+		reset => reset,
+		
+		-- TESTING: no external signal, do not synchronize
+		lockSignal_external	=> '0',
+		
+		-- TESTING: enable the entity
+		lockEnable => AH_ON,
+		
+		-- Route output signal to a pin
+		signalOut => sig3
+	);
 	
 end Structural;
