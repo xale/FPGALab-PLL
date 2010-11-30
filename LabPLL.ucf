@@ -106,7 +106,7 @@ net clk100   loc=T9;		# 100 Mhz external clock from oscillator
 #net ls<4>   	loc=M4;
 #net ls<5>   	loc=H13;
 #net ls<6>     	loc=H14;
-#net lsdp   	loc=N15; 	 # left dec. pt
+net lsdp   	loc=N15; 	 # left dec. pt
 #net xsled	 	loc=M6;	    #alive signal to xsa led segment-0 when jtag interface
 #
 #--xst-3 bargraph led segments. -------
@@ -121,8 +121,8 @@ net clk100   loc=T9;		# 100 Mhz external clock from oscillator
 #net bg<1>   	loc=N2;  	# shared with SW3
 #net bg<0>   	loc=L5;  	# shared with SW2
 #net bg0 		loc=L5;  	# Use this type entry for individual bg elements.
-net bg8  		loc=J16;
-#net bg9  		loc=J14;	
+#net bg8  		loc=J16;
+#net bg9  		loc=J14;
 
 #---misc sw's, aux IO pins, etc (all PB's active low)----------------
 # general purpose I/O may be selected from:

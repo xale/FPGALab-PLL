@@ -43,7 +43,7 @@ port
 	sig3	: out	std_logic;
 	
 	-- PLL-enabled LED
-	bg8		: out	std_logic
+	lsdp	: out	std_logic
 );
 end LabPLL;
 
@@ -85,14 +85,14 @@ begin
 	port map
 	(
 		buttonRaw_AL => sw1,
-		clk => clk100,
+		clk => toggleSampleClk,
 		reset => reset,
 		bufferedRawOut => open,
 		Q => PLLEnable
 	);
 	
 	-- Show enabled/disabled status on an LED
-	bg8 <= PLLEnable;
+	lsdp <= PLLEnable;
 	
 	-- Instantiate PLL component
 	PLL: PhaseLockedLoop250kHz
