@@ -36,12 +36,15 @@ entity ToggleD is
 		-- Raw button input after clock buffers and inverter
 		bufferedRawOut	: out	std_logic;
 		
-		-- Toggle output value, after shift-register buffer/synchonization
+		-- Toggle output value
 		Q				: out	std_logic
 	);
 end ToggleD;
 
 architecture Behavioral of ToggleD is
+	
+	-- Constants
+	constant SHIFT_REGISTER_LENGTH	: integer	:= 3;
 	
 	-- Internal signals
 	-- Push-button input buffer stages
@@ -49,8 +52,8 @@ architecture Behavioral of ToggleD is
 	signal bufferedRaw		: std_logic;	-- After IBUF + inverter
 	
 	-- Shift register value
-	signal shiftRegValue		: std_logic_vector(2 downto 0);
-	signal nextShiftRegValue	: std_logic_vector(2 downto 0);
+	signal shiftRegValue		: std_logic_vector((SHIFT_REGISTER_LENGTH - 1) downto 0);
+	signal nextShiftRegValue	: std_logic_vector((SHIFT_REGISTER_LENGTH - 1) downto 0);
 	
 	-- Synchronized button value
 	signal synchedButton	: std_logic;
@@ -61,22 +64,21 @@ architecture Behavioral of ToggleD is
 		
 begin
 	
-	-- Add an input buffer and an inverter to the raw input
-	C_BUF1: IBUF port map(I => buttonRaw_AL, O => bufferedRaw_AL);
-	bufferedRaw <= NOT bufferedRaw_AL;
+	-- Invert the raw input
+	bufferedRaw <= NOT buttonRaw_AL;
 	
 	-- Synchronized input process
 	process (clk, reset)
 	begin
 	
-		-- On reset, clear the shift register and the output value
+		-- On reset, clear the shift register and synchronized button value
 		if (reset = AH_ON) then
 		
 			shiftRegValue <= (others => AH_OFF);
 			synchedButton <= AH_OFF;
 		
 		-- On a clock edge, shift a new value into the register from the input
-		-- button, and update the output value of the toggle
+		-- button, and update the synchronized button value, if changed
 		elsif rising_edge(clk) then
 		
 			shiftRegValue <= nextShiftRegValue;
@@ -87,9 +89,9 @@ begin
 	end process;
 	
 	-- Next-shift register value (shifts in one bit at a time from the button)
-	nextShiftRegValue <= shiftRegValue(1 downto 0) & bufferedRaw;
+	nextShiftRegValue <= shiftRegValue((SHIFT_REGISTER_LENGTH - 2) downto 0) & bufferedRaw;
 	
-	-- Next-output logic (inverts when shift register is all ones)	
+	-- 
 	nextButtonValue <=	AH_ON when (shiftRegValue = "111") else
 						AH_OFF when (shiftRegValue = "000") else
 						synchedButton;
