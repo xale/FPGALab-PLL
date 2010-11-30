@@ -31,7 +31,7 @@ port
 	-- External signal, with which this entity will attempt to synchronize
 	lockSignal_external	: in	std_logic;
 	
-	-- Lock-enable; if clear, this entity is a pass-through for the external signal
+	-- Lock-enable; if clear, this entity will not attempt to synchronize with external signal
 	lockEnable	: in	std_logic;
 	
 	-- Output signal
@@ -104,9 +104,7 @@ begin
 	
 	-- FIXME: WRITEME: next-values logic
 	
-	-- Output signal:
-	-- If the lock is disabled, pass the input through; (after synching)
-	-- otherwise, use the MSB of the accumulator
-	signalOut <= accumulatorMSB when (lockEnable = AH_ON) else lockSignal;
+	-- Output signal (MSB of accumulator)
+	signalOut <= accumulatorMSB;
 	
 end Behavioral;

@@ -238,7 +238,7 @@ package AHeinzDeclares is
 		-- External signal, with which this entity will attempt to synchronize
 		lockSignal_external	: in	std_logic;
 		
-		-- Lock-enable; if clear, this entity is a pass-through for the external signal
+		-- Lock-enable; if clear, this entity will not attempt to synchronize with external signal
 		lockEnable	: in	std_logic;
 		
 		-- Output signal
