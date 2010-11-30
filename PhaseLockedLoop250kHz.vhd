@@ -60,6 +60,9 @@ architecture Behavioral of PhaseLockedLoop250kHz is
 	signal nextIncrement		: signed(31 downto 0);
 	attribute INIT of phaseIncrement	: signal is "INITIAL_PHASE_INCREMENT";
 	
+	-- Phase offset between local and input signal
+	signal phaseOffset			: signed(31 downto 0);
+	
 begin
 	
 	-- Input-signal synchronizer process
@@ -77,9 +80,10 @@ begin
 	-- Accumulator process
 	process (clk100MHz, reset)
 	begin
-		-- Clear accumulator on reset
+		-- Clear accumulator on reset, and set initial increment value
 		if (reset = AH_ON) then
 			phaseAccumulator <= (others => '0');
+			phaseIncrement <= INITIAL_PHASE_INCREMENT;
 		-- Latch next accumulator value on clock edges
 		elsif rising_edge(clk100MHz) then
 			phaseAccumulator <= nextAccumulatorValue;
@@ -90,13 +94,11 @@ begin
 	-- Add the phase-increment value on every cycle
 	nextAccumulatorValue <=	(phaseAccumulator + phaseIncrement);
 	
-	-- Frequency/phase locking adjustments process
+	-- Phase-offset measurement process
 	process (lockSignal, reset)
 	begin
-		-- On reset, reinitialize the phase-increment value
 		if (reset = AH_ON) then
-			phaseIncrement <= INITIAL_PHASE_INCREMENT;
-			-- FIXME: other stuff?
+			-- FIXME: WRITEME
 		elsif falling_edge(lockSignal) then
 			-- FIXME: WRITEME
 		end if;
