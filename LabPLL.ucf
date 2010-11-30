@@ -121,7 +121,7 @@ net clk100   loc=T9;		# 100 Mhz external clock from oscillator
 #net bg<1>   	loc=N2;  	# shared with SW3
 #net bg<0>   	loc=L5;  	# shared with SW2
 #net bg0 		loc=L5;  	# Use this type entry for individual bg elements.
-#net bg8  		loc=J16; 	  
+net bg8  		loc=J16;
 #net bg9  		loc=J14;	
 
 #---misc sw's, aux IO pins, etc (all PB's active low)----------------

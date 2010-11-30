@@ -40,15 +40,28 @@ port
 	fceb	: out	std_logic;
 	
 	-- PLL output signal
-	sig3	: out	std_logic
+	sig3	: out	std_logic;
+	
+	-- PLL-enabled LED
+	bg8		: out	std_logic
 );
 end LabPLL;
 
 architecture Structural of LabPLL is
 	
+	-- Constants
+	-- Divisor for toggle-switch sample clock
+	constant TOGGLE_SAMP_CLK_DIV	: integer	:= 3_000_000;
+	
 	-- Internal signals
 	-- Inverted (active-high) reset
 	signal reset	: std_logic;
+	
+	-- Toggle-switch sampling clock
+	signal toggleSampleClk	: std_logic;
+	
+	-- PLL-enable/pass-through signal
+	signal PLLEnable	: std_logic;
 	
 begin
 	
@@ -57,6 +70,29 @@ begin
 	
 	-- Invert external reset signal
 	reset <= NOT swrst;
+	
+	-- Instantiate PLL-enable-control toggle entity (and sampling-clock divider)
+	ToggleClkDiv: CounterClockDivider
+	generic map (MAX_DIVISOR => TOGGLE_SAMP_CLK_DIV)
+	port map
+	(
+		clkIn => clk100,
+		reset => reset,
+		divisor => TOGGLE_SAMP_CLK_DIV,
+		clkOut => toggleSampleClk
+	);
+	EnableToggle: ToggleD
+	port map
+	(
+		buttonRaw_AL => sw1,
+		clk => clk100,
+		reset => reset,
+		bufferedRawOut => open,
+		Q => PLLEnable
+	);
+	
+	-- Show enabled/disabled status on an LED
+	bg8 <= PLLEnable;
 	
 	-- Instantiate PLL component
 	PLL: PhaseLockedLoop250kHz
@@ -68,11 +104,11 @@ begin
 		-- Connect global reset
 		reset => reset,
 		
-		-- TESTING: no external signal, do not synchronize
-		lockSignal_external	=> '0',
+		-- Connect external signal
+		lockSignal_external	=> sig1,
 		
-		-- TESTING: enable the entity
-		lockEnable => AH_ON,
+		-- Enable/disable pass-through based on toggle switch
+		lockEnable => PLLEnable,
 		
 		-- Route output signal to a pin
 		signalOut => sig3
