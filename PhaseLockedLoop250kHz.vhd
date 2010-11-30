@@ -7,8 +7,8 @@
 -- Module Name:		PhaseLockedLoop250kHz - Behavioral 
 -- Project Name:	LabPLL
 -- Target Devices:	Xilinx Spartan3 XC3S1000
--- Description:		A phase-locked loop entity designed to lock onto an external
---					square-wave signal clocked at or near 250 kHz.
+-- Description:		A second-order phase-locked loop entity designed to lock onto
+--					an external square-wave signal clocked at or near 250 kHz.
 --
 -- Dependencies:	IEEE standard libraries, AHeinzDeclares package
 --
@@ -41,6 +41,9 @@ end PhaseLockedLoop250kHz;
 
 architecture Behavioral of PhaseLockedLoop250kHz is
 	
+	-- Constants
+	constant INITIAL_PHASE_INCREMENT	: signed(31 downto 0)	:= TO_SIGNED(107_374_182, 32);
+	
 	-- Internal signals
 	-- Clock-synched input signal
 	signal lockSignal	: std_logic;
@@ -50,7 +53,12 @@ architecture Behavioral of PhaseLockedLoop250kHz is
 	signal nextAccumulatorValue	: signed(31 downto 0);
 	
 	-- Alias for MSB of phase accumulator
-	alias accumulatorMSB	: std_logic is phaseAccumulator(31);
+	alias accumulatorMSB		: std_logic is phaseAccumulator(31);
+	
+	-- Phase-accumulator increment
+	signal phaseIncrement		: signed(31 downto 0);
+	signal nextIncrement		: signed(31 downto 0);
+	attribute INIT of phaseIncrement	: signal is "INITIAL_PHASE_INCREMENT";
 	
 begin
 	
@@ -78,13 +86,17 @@ begin
 		end if;
 	end process;
 	
-	-- FIXME: WRITEME: next-accumulator-value logic
+	-- Next-accumulator-value logic
+	-- Add the phase-increment value on every cycle
+	nextAccumulatorValue <=	(phaseAccumulator + phaseIncrement);
 	
 	-- Frequency/phase locking adjustments process
 	process (lockSignal, reset)
 	begin
+		-- On reset, reinitialize the phase-increment value
 		if (reset = AH_ON) then
-			-- FIXME: WRITEME
+			phaseIncrement <= INITIAL_PHASE_INCREMENT;
+			-- FIXME: other stuff?
 		elsif falling_edge(lockSignal) then
 			-- FIXME: WRITEME
 		end if;
