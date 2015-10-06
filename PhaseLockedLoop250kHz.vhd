@@ -35,7 +35,10 @@ port
 	lockEnable	: in	std_logic;
 	
 	-- Output signal
-	signalOut	: out	std_logic
+	signalOut	: out	std_logic;
+	
+	-- Current phase accumulator value, for diagnostics
+	phaseOut	: out	signed(31 downto 0)
 );
 end PhaseLockedLoop250kHz;
 
@@ -66,17 +69,18 @@ architecture Behavioral of PhaseLockedLoop250kHz is
 begin
 	
 	-- Input-signal synchronizer process
-	process (clk100MHz, reset)
-	begin
-		-- Clear latched signal value on reset
-		if (reset = AH_ON) then
-			lockSignal <= '0';
-		-- Latch new signal value from input signal on clock edges
-		elsif rising_edge(clk100MHz) then
-			lockSignal <= lockSignal_external;
-		end if;
-	end process;
-	
+	-- FIXME: TESTING
+--	process (clk100MHz, reset)
+--	begin
+--		-- Clear latched signal value on reset
+--		if (reset = AH_ON) then
+--			lockSignal <= '0';
+--		-- Latch new signal value from input signal on clock edges
+--		elsif rising_edge(clk100MHz) then
+--			lockSignal <= lockSignal_external;
+--		end if;
+--	end process;
+
 	-- Accumulator process
 	process (clk100MHz, reset)
 	begin
@@ -93,6 +97,9 @@ begin
 	-- Next-accumulator-value logic
 	-- Add the phase-increment value on every cycle
 	nextAccumulatorValue <=	(phaseAccumulator + phaseIncrement);
+	
+	-- Expose the accumulator value for diagnostic purposes
+	phaseOut <= phaseAccumulator;
 	
 	-- Phase-offset measurement process
 	process (lockSignal, reset)

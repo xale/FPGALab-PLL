@@ -20,6 +20,7 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 use WORK.AHeinzDeclares.all;
+use WORK.FPGALabDeclares.all;
 
 entity LabPLL is
 port
@@ -55,10 +56,14 @@ architecture Structural of LabPLL is
 	
 	-- Internal signals
 	-- Inverted (active-high) reset
-	signal reset	: std_logic;
+	signal reset		: std_logic;
+	
+	-- Master clock
+	signal masterClk	: std_logic;
 	
 	-- Toggle-switch sampling clock
 	signal toggleSampleClk	: std_logic;
+	signal sampleHeartbeat	: std_logic;
 	
 	-- PLL-enable/pass-through signal
 	signal PLLEnable	: std_logic;
@@ -71,12 +76,15 @@ begin
 	-- Invert external reset signal
 	reset <= NOT swrst;
 	
+	-- Add buffers to master clock
+	ClkBuf: IBUFG port map(I => clk100, O => masterClk);
+	
 	-- Instantiate PLL-enable-control toggle entity (and sampling-clock divider)
 	ToggleClkDiv: CounterClockDivider
 	generic map (MAX_DIVISOR => TOGGLE_SAMP_CLK_DIV)
 	port map
 	(
-		clkIn => clk100,
+		clkIn => masterClk,
 		reset => reset,
 		divisor => TOGGLE_SAMP_CLK_DIV,
 		clkOut => toggleSampleClk
@@ -88,18 +96,35 @@ begin
 		clk => toggleSampleClk,
 		reset => reset,
 		bufferedRawOut => open,
-		Q => PLLEnable
+		--bufferedRawOut => lsdp,	-- FIXME: TESTING
+		--Q => PLLEnable
+		Q => open -- FIXME: TESTING
 	);
 	
+	
+	PLLEnable <= '0'; -- FIXME: TESTING
+	
+	process (toggleSampleClk, reset)
+	begin
+		if (reset = AH_ON) then
+			sampleHeartbeat <= AH_OFF;
+		elsif rising_edge(toggleSampleClk) then
+			sampleHeartbeat <= NOT sampleHeartbeat;
+		end if;
+	end process;
+	lsdp <= sampleHeartbeat; -- FIXME: TESTING
+	
+	sig3 <= masterClk; -- FIXME: TESTING
+	
 	-- Show enabled/disabled status on an LED
-	lsdp <= PLLEnable;
+	--lsdp <= PLLEnable; -- FIXME: TESTING
 	
 	-- Instantiate PLL component
 	PLL: PhaseLockedLoop250kHz
 	port map
 	(
 		-- Connect master clock
-		clk100MHz => clk100,
+		clk100MHz => masterClk,
 		
 		-- Connect global reset
 		reset => reset,
@@ -107,11 +132,12 @@ begin
 		-- Connect external signal
 		lockSignal_external	=> sig1,
 		
-		-- Enable/disable pass-through based on toggle switch
+		-- Enable/disable phase-lock based on toggle switch
 		lockEnable => PLLEnable,
 		
 		-- Route output signal to a pin
-		signalOut => sig3
+		--signalOut => sig3
+		signalOut => open -- FIXME: TESTING
 	);
 	
 end Structural;
