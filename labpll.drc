@@ -1,0 +1,11 @@
+Release 12.2 Drc M.63c (nt64)
+Copyright (c) 1995-2010 Xilinx, Inc.  All rights reserved.
+
+Thu Dec 02 13:31:09 2010
+
+drc -z LabPLL.ncd LabPLL.pcf
+
+WARNING:PhysDesignRules:367 - The signal <sig1_IBUF> is incomplete. The signal
+   does not drive any load pins in the design.
+DRC detected 0 errors and 1 warnings.  Please see the previously displayed
+individual error or warning messages for more details.

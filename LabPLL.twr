@@ -1,0 +1,692 @@
+--------------------------------------------------------------------------------
+Release 12.2 Trace  (nt64)
+Copyright (c) 1995-2010 Xilinx, Inc.  All rights reserved.
+
+C:\Xilinx\12.2\ISE_DS\ISE\bin\nt64\unwrapped\trce.exe -intstyle ise -v 3 -s 5
+-n 3 -fastpaths -xml LabPLL.twx LabPLL.ncd -o LabPLL.twr LabPLL.pcf -ucf
+LabPLL.ucf
+
+Design file:              LabPLL.ncd
+Physical constraint file: LabPLL.pcf
+Device,package,speed:     xc3s1000,ft256,-5 (PRODUCTION 1.39 2010-06-22)
+Report level:             verbose report
+
+Environment Variable      Effect 
+--------------------      ------ 
+NONE                      No environment variables were set
+--------------------------------------------------------------------------------
+
+INFO:Timing:2752 - To get complete path coverage, use the unconstrained paths 
+   option. All paths that are not constrained will be reported in the 
+   unconstrained paths section(s) of the report.
+INFO:Timing:3339 - The clock-to-out numbers in this timing report are based on 
+   a 50 Ohm transmission line loading model.  For the details of this model, 
+   and for more information on accounting for different loading conditions, 
+   please see the device datasheet.
+INFO:Timing:3390 - This architecture does not support a default System Jitter 
+   value, please add SYSTEM_JITTER constraint to the UCF to modify the Clock 
+   Uncertainty calculation.
+INFO:Timing:3389 - This architecture does not support 'Discrete Jitter' and 
+   'Phase Error' calculations, these terms will be zero in the Clock 
+   Uncertainty calculation.  Please make appropriate modification to 
+   SYSTEM_JITTER to account for the unsupported Discrete Jitter and Phase 
+   Error.
+
+================================================================================
+Timing constraint: NET "sig3_OBUF1" PERIOD = 10 ns HIGH 50%;
+
+ 621 paths analyzed, 45 endpoints analyzed, 0 failing endpoints
+ 0 timing errors detected. (0 setup errors, 0 hold errors, 0 component switching limit errors)
+ Minimum period is   6.169ns.
+--------------------------------------------------------------------------------
+
+Paths for end point ToggleClkDiv/clkOut (SLICE_X73Y31.BY), 16 paths
+--------------------------------------------------------------------------------
+Slack (setup path):     3.831ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               ToggleClkDiv/counterValue_13 (FF)
+  Destination:          ToggleClkDiv/clkOut (FF)
+  Requirement:          10.000ns
+  Data Path Delay:      6.040ns (Levels of Logic = 4)
+  Clock Path Skew:      -0.129ns (0.214 - 0.343)
+  Source Clock:         sig3_OBUF rising at 0.000ns
+  Destination Clock:    sig3_OBUF rising at 10.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: ToggleClkDiv/counterValue_13 to ToggleClkDiv/clkOut
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X61Y41.XQ      Tcko                  0.626   ToggleClkDiv/counterValue<13>
+                                                       ToggleClkDiv/counterValue_13
+    SLICE_X62Y39.G2      net (fanout=2)        0.828   ToggleClkDiv/counterValue<13>
+    SLICE_X62Y39.COUT    Topcyg                0.954   ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<3>
+                                                       ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_lut<3>
+                                                       ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<3>
+    SLICE_X62Y40.CIN     net (fanout=1)        0.000   ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<3>
+    SLICE_X62Y40.COUT    Tbyp                  0.104   ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<5>
+                                                       ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<4>
+                                                       ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<5>
+    SLICE_X62Y41.CIN     net (fanout=1)        0.000   ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<5>
+    SLICE_X62Y41.COUT    Tbyp                  0.104   ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<7>
+                                                       ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<6>
+                                                       ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<7>
+    SLICE_X62Y42.CIN     net (fanout=1)        0.000   ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<7>
+    SLICE_X62Y42.XB      Tcinxb                0.383   ToggleClkDiv/nextClkOut
+                                                       ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<8>
+    SLICE_X73Y31.BY      net (fanout=23)       2.814   ToggleClkDiv/nextClkOut
+    SLICE_X73Y31.CLK     Tdick                 0.227   ToggleClkDiv/clkOut
+                                                       ToggleClkDiv/clkOut
+    -------------------------------------------------  ---------------------------
+    Total                                      6.040ns (2.398ns logic, 3.642ns route)
+                                                       (39.7% logic, 60.3% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     3.872ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               ToggleClkDiv/counterValue_12 (FF)
+  Destination:          ToggleClkDiv/clkOut (FF)
+  Requirement:          10.000ns
+  Data Path Delay:      5.999ns (Levels of Logic = 4)
+  Clock Path Skew:      -0.129ns (0.214 - 0.343)
+  Source Clock:         sig3_OBUF rising at 0.000ns
+  Destination Clock:    sig3_OBUF rising at 10.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: ToggleClkDiv/counterValue_12 to ToggleClkDiv/clkOut
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X61Y41.YQ      Tcko                  0.626   ToggleClkDiv/counterValue<13>
+                                                       ToggleClkDiv/counterValue_12
+    SLICE_X62Y39.G1      net (fanout=2)        0.787   ToggleClkDiv/counterValue<12>
+    SLICE_X62Y39.COUT    Topcyg                0.954   ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<3>
+                                                       ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_lut<3>
+                                                       ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<3>
+    SLICE_X62Y40.CIN     net (fanout=1)        0.000   ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<3>
+    SLICE_X62Y40.COUT    Tbyp                  0.104   ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<5>
+                                                       ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<4>
+                                                       ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<5>
+    SLICE_X62Y41.CIN     net (fanout=1)        0.000   ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<5>
+    SLICE_X62Y41.COUT    Tbyp                  0.104   ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<7>
+                                                       ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<6>
+                                                       ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<7>
+    SLICE_X62Y42.CIN     net (fanout=1)        0.000   ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<7>
+    SLICE_X62Y42.XB      Tcinxb                0.383   ToggleClkDiv/nextClkOut
+                                                       ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<8>
+    SLICE_X73Y31.BY      net (fanout=23)       2.814   ToggleClkDiv/nextClkOut
+    SLICE_X73Y31.CLK     Tdick                 0.227   ToggleClkDiv/clkOut
+                                                       ToggleClkDiv/clkOut
+    -------------------------------------------------  ---------------------------
+    Total                                      5.999ns (2.398ns logic, 3.601ns route)
+                                                       (40.0% logic, 60.0% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     3.974ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               ToggleClkDiv/counterValue_20 (FF)
+  Destination:          ToggleClkDiv/clkOut (FF)
+  Requirement:          10.000ns
+  Data Path Delay:      5.849ns (Levels of Logic = 2)
+  Clock Path Skew:      -0.177ns (0.214 - 0.391)
+  Source Clock:         sig3_OBUF rising at 0.000ns
+  Destination Clock:    sig3_OBUF rising at 10.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: ToggleClkDiv/counterValue_20 to ToggleClkDiv/clkOut
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X60Y45.YQ      Tcko                  0.626   ToggleClkDiv/counterValue<21>
+                                                       ToggleClkDiv/counterValue_20
+    SLICE_X62Y41.G1      net (fanout=2)        0.845   ToggleClkDiv/counterValue<20>
+    SLICE_X62Y41.COUT    Topcyg                0.954   ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<7>
+                                                       ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_lut<7>_INV_0
+                                                       ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<7>
+    SLICE_X62Y42.CIN     net (fanout=1)        0.000   ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<7>
+    SLICE_X62Y42.XB      Tcinxb                0.383   ToggleClkDiv/nextClkOut
+                                                       ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<8>
+    SLICE_X73Y31.BY      net (fanout=23)       2.814   ToggleClkDiv/nextClkOut
+    SLICE_X73Y31.CLK     Tdick                 0.227   ToggleClkDiv/clkOut
+                                                       ToggleClkDiv/clkOut
+    -------------------------------------------------  ---------------------------
+    Total                                      5.849ns (2.190ns logic, 3.659ns route)
+                                                       (37.4% logic, 62.6% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point ToggleClkDiv/counterValue_7 (SLICE_X61Y36.F1), 16 paths
+--------------------------------------------------------------------------------
+Slack (setup path):     4.838ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               ToggleClkDiv/counterValue_13 (FF)
+  Destination:          ToggleClkDiv/counterValue_7 (FF)
+  Requirement:          10.000ns
+  Data Path Delay:      5.065ns (Levels of Logic = 5)
+  Clock Path Skew:      -0.097ns (0.115 - 0.212)
+  Source Clock:         sig3_OBUF rising at 0.000ns
+  Destination Clock:    sig3_OBUF rising at 10.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: ToggleClkDiv/counterValue_13 to ToggleClkDiv/counterValue_7
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X61Y41.XQ      Tcko                  0.626   ToggleClkDiv/counterValue<13>
+                                                       ToggleClkDiv/counterValue_13
+    SLICE_X62Y39.G2      net (fanout=2)        0.828   ToggleClkDiv/counterValue<13>
+    SLICE_X62Y39.COUT    Topcyg                0.954   ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<3>
+                                                       ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_lut<3>
+                                                       ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<3>
+    SLICE_X62Y40.CIN     net (fanout=1)        0.000   ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<3>
+    SLICE_X62Y40.COUT    Tbyp                  0.104   ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<5>
+                                                       ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<4>
+                                                       ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<5>
+    SLICE_X62Y41.CIN     net (fanout=1)        0.000   ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<5>
+    SLICE_X62Y41.COUT    Tbyp                  0.104   ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<7>
+                                                       ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<6>
+                                                       ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<7>
+    SLICE_X62Y42.CIN     net (fanout=1)        0.000   ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<7>
+    SLICE_X62Y42.XB      Tcinxb                0.383   ToggleClkDiv/nextClkOut
+                                                       ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<8>
+    SLICE_X61Y36.F1      net (fanout=23)       1.516   ToggleClkDiv/nextClkOut
+    SLICE_X61Y36.CLK     Tfck                  0.550   ToggleClkDiv/counterValue<7>
+                                                       ToggleClkDiv/nextValue<7>1
+                                                       ToggleClkDiv/counterValue_7
+    -------------------------------------------------  ---------------------------
+    Total                                      5.065ns (2.721ns logic, 2.344ns route)
+                                                       (53.7% logic, 46.3% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     4.879ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               ToggleClkDiv/counterValue_12 (FF)
+  Destination:          ToggleClkDiv/counterValue_7 (FF)
+  Requirement:          10.000ns
+  Data Path Delay:      5.024ns (Levels of Logic = 5)
+  Clock Path Skew:      -0.097ns (0.115 - 0.212)
+  Source Clock:         sig3_OBUF rising at 0.000ns
+  Destination Clock:    sig3_OBUF rising at 10.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: ToggleClkDiv/counterValue_12 to ToggleClkDiv/counterValue_7
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X61Y41.YQ      Tcko                  0.626   ToggleClkDiv/counterValue<13>
+                                                       ToggleClkDiv/counterValue_12
+    SLICE_X62Y39.G1      net (fanout=2)        0.787   ToggleClkDiv/counterValue<12>
+    SLICE_X62Y39.COUT    Topcyg                0.954   ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<3>
+                                                       ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_lut<3>
+                                                       ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<3>
+    SLICE_X62Y40.CIN     net (fanout=1)        0.000   ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<3>
+    SLICE_X62Y40.COUT    Tbyp                  0.104   ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<5>
+                                                       ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<4>
+                                                       ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<5>
+    SLICE_X62Y41.CIN     net (fanout=1)        0.000   ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<5>
+    SLICE_X62Y41.COUT    Tbyp                  0.104   ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<7>
+                                                       ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<6>
+                                                       ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<7>
+    SLICE_X62Y42.CIN     net (fanout=1)        0.000   ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<7>
+    SLICE_X62Y42.XB      Tcinxb                0.383   ToggleClkDiv/nextClkOut
+                                                       ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<8>
+    SLICE_X61Y36.F1      net (fanout=23)       1.516   ToggleClkDiv/nextClkOut
+    SLICE_X61Y36.CLK     Tfck                  0.550   ToggleClkDiv/counterValue<7>
+                                                       ToggleClkDiv/nextValue<7>1
+                                                       ToggleClkDiv/counterValue_7
+    -------------------------------------------------  ---------------------------
+    Total                                      5.024ns (2.721ns logic, 2.303ns route)
+                                                       (54.2% logic, 45.8% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     4.981ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               ToggleClkDiv/counterValue_20 (FF)
+  Destination:          ToggleClkDiv/counterValue_7 (FF)
+  Requirement:          10.000ns
+  Data Path Delay:      4.874ns (Levels of Logic = 3)
+  Clock Path Skew:      -0.145ns (0.115 - 0.260)
+  Source Clock:         sig3_OBUF rising at 0.000ns
+  Destination Clock:    sig3_OBUF rising at 10.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: ToggleClkDiv/counterValue_20 to ToggleClkDiv/counterValue_7
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X60Y45.YQ      Tcko                  0.626   ToggleClkDiv/counterValue<21>
+                                                       ToggleClkDiv/counterValue_20
+    SLICE_X62Y41.G1      net (fanout=2)        0.845   ToggleClkDiv/counterValue<20>
+    SLICE_X62Y41.COUT    Topcyg                0.954   ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<7>
+                                                       ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_lut<7>_INV_0
+                                                       ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<7>
+    SLICE_X62Y42.CIN     net (fanout=1)        0.000   ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<7>
+    SLICE_X62Y42.XB      Tcinxb                0.383   ToggleClkDiv/nextClkOut
+                                                       ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<8>
+    SLICE_X61Y36.F1      net (fanout=23)       1.516   ToggleClkDiv/nextClkOut
+    SLICE_X61Y36.CLK     Tfck                  0.550   ToggleClkDiv/counterValue<7>
+                                                       ToggleClkDiv/nextValue<7>1
+                                                       ToggleClkDiv/counterValue_7
+    -------------------------------------------------  ---------------------------
+    Total                                      4.874ns (2.513ns logic, 2.361ns route)
+                                                       (51.6% logic, 48.4% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point ToggleClkDiv/counterValue_0 (SLICE_X61Y35.G2), 16 paths
+--------------------------------------------------------------------------------
+Slack (setup path):     4.856ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               ToggleClkDiv/counterValue_13 (FF)
+  Destination:          ToggleClkDiv/counterValue_0 (FF)
+  Requirement:          10.000ns
+  Data Path Delay:      4.998ns (Levels of Logic = 5)
+  Clock Path Skew:      -0.146ns (0.066 - 0.212)
+  Source Clock:         sig3_OBUF rising at 0.000ns
+  Destination Clock:    sig3_OBUF rising at 10.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: ToggleClkDiv/counterValue_13 to ToggleClkDiv/counterValue_0
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X61Y41.XQ      Tcko                  0.626   ToggleClkDiv/counterValue<13>
+                                                       ToggleClkDiv/counterValue_13
+    SLICE_X62Y39.G2      net (fanout=2)        0.828   ToggleClkDiv/counterValue<13>
+    SLICE_X62Y39.COUT    Topcyg                0.954   ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<3>
+                                                       ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_lut<3>
+                                                       ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<3>
+    SLICE_X62Y40.CIN     net (fanout=1)        0.000   ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<3>
+    SLICE_X62Y40.COUT    Tbyp                  0.104   ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<5>
+                                                       ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<4>
+                                                       ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<5>
+    SLICE_X62Y41.CIN     net (fanout=1)        0.000   ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<5>
+    SLICE_X62Y41.COUT    Tbyp                  0.104   ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<7>
+                                                       ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<6>
+                                                       ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<7>
+    SLICE_X62Y42.CIN     net (fanout=1)        0.000   ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<7>
+    SLICE_X62Y42.XB      Tcinxb                0.383   ToggleClkDiv/nextClkOut
+                                                       ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<8>
+    SLICE_X61Y35.G2      net (fanout=23)       1.449   ToggleClkDiv/nextClkOut
+    SLICE_X61Y35.CLK     Tgck                  0.550   ToggleClkDiv/counterValue<1>
+                                                       ToggleClkDiv/nextValue<0>1
+                                                       ToggleClkDiv/counterValue_0
+    -------------------------------------------------  ---------------------------
+    Total                                      4.998ns (2.721ns logic, 2.277ns route)
+                                                       (54.4% logic, 45.6% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     4.897ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               ToggleClkDiv/counterValue_12 (FF)
+  Destination:          ToggleClkDiv/counterValue_0 (FF)
+  Requirement:          10.000ns
+  Data Path Delay:      4.957ns (Levels of Logic = 5)
+  Clock Path Skew:      -0.146ns (0.066 - 0.212)
+  Source Clock:         sig3_OBUF rising at 0.000ns
+  Destination Clock:    sig3_OBUF rising at 10.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: ToggleClkDiv/counterValue_12 to ToggleClkDiv/counterValue_0
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X61Y41.YQ      Tcko                  0.626   ToggleClkDiv/counterValue<13>
+                                                       ToggleClkDiv/counterValue_12
+    SLICE_X62Y39.G1      net (fanout=2)        0.787   ToggleClkDiv/counterValue<12>
+    SLICE_X62Y39.COUT    Topcyg                0.954   ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<3>
+                                                       ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_lut<3>
+                                                       ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<3>
+    SLICE_X62Y40.CIN     net (fanout=1)        0.000   ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<3>
+    SLICE_X62Y40.COUT    Tbyp                  0.104   ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<5>
+                                                       ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<4>
+                                                       ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<5>
+    SLICE_X62Y41.CIN     net (fanout=1)        0.000   ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<5>
+    SLICE_X62Y41.COUT    Tbyp                  0.104   ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<7>
+                                                       ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<6>
+                                                       ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<7>
+    SLICE_X62Y42.CIN     net (fanout=1)        0.000   ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<7>
+    SLICE_X62Y42.XB      Tcinxb                0.383   ToggleClkDiv/nextClkOut
+                                                       ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<8>
+    SLICE_X61Y35.G2      net (fanout=23)       1.449   ToggleClkDiv/nextClkOut
+    SLICE_X61Y35.CLK     Tgck                  0.550   ToggleClkDiv/counterValue<1>
+                                                       ToggleClkDiv/nextValue<0>1
+                                                       ToggleClkDiv/counterValue_0
+    -------------------------------------------------  ---------------------------
+    Total                                      4.957ns (2.721ns logic, 2.236ns route)
+                                                       (54.9% logic, 45.1% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     4.999ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               ToggleClkDiv/counterValue_20 (FF)
+  Destination:          ToggleClkDiv/counterValue_0 (FF)
+  Requirement:          10.000ns
+  Data Path Delay:      4.807ns (Levels of Logic = 3)
+  Clock Path Skew:      -0.194ns (0.066 - 0.260)
+  Source Clock:         sig3_OBUF rising at 0.000ns
+  Destination Clock:    sig3_OBUF rising at 10.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: ToggleClkDiv/counterValue_20 to ToggleClkDiv/counterValue_0
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X60Y45.YQ      Tcko                  0.626   ToggleClkDiv/counterValue<21>
+                                                       ToggleClkDiv/counterValue_20
+    SLICE_X62Y41.G1      net (fanout=2)        0.845   ToggleClkDiv/counterValue<20>
+    SLICE_X62Y41.COUT    Topcyg                0.954   ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<7>
+                                                       ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_lut<7>_INV_0
+                                                       ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<7>
+    SLICE_X62Y42.CIN     net (fanout=1)        0.000   ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<7>
+    SLICE_X62Y42.XB      Tcinxb                0.383   ToggleClkDiv/nextClkOut
+                                                       ToggleClkDiv/Mcompar_nextValue_cmp_ge0000_cy<8>
+    SLICE_X61Y35.G2      net (fanout=23)       1.449   ToggleClkDiv/nextClkOut
+    SLICE_X61Y35.CLK     Tgck                  0.550   ToggleClkDiv/counterValue<1>
+                                                       ToggleClkDiv/nextValue<0>1
+                                                       ToggleClkDiv/counterValue_0
+    -------------------------------------------------  ---------------------------
+    Total                                      4.807ns (2.513ns logic, 2.294ns route)
+                                                       (52.3% logic, 47.7% route)
+
+--------------------------------------------------------------------------------
+
+Hold Paths: NET "sig3_OBUF1" PERIOD = 10 ns HIGH 50%;
+--------------------------------------------------------------------------------
+
+Paths for end point ToggleClkDiv/counterValue_0 (SLICE_X61Y35.G4), 1 path
+--------------------------------------------------------------------------------
+Slack (hold path):      1.545ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               ToggleClkDiv/counterValue_0 (FF)
+  Destination:          ToggleClkDiv/counterValue_0 (FF)
+  Requirement:          0.000ns
+  Data Path Delay:      1.545ns (Levels of Logic = 2)
+  Clock Path Skew:      0.000ns
+  Source Clock:         sig3_OBUF rising at 10.000ns
+  Destination Clock:    sig3_OBUF rising at 10.000ns
+  Clock Uncertainty:    0.000ns
+
+  Minimum Data Path: ToggleClkDiv/counterValue_0 to ToggleClkDiv/counterValue_0
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X61Y35.YQ      Tcko                  0.501   ToggleClkDiv/counterValue<1>
+                                                       ToggleClkDiv/counterValue_0
+    SLICE_X60Y34.F4      net (fanout=1)        0.260   ToggleClkDiv/counterValue<0>
+    SLICE_X60Y34.X       Topx                  0.712   ToggleClkDiv/nextValue_addsub0000<0>
+                                                       ToggleClkDiv/Madd_nextValue_addsub0000_lut<0>_INV_0
+                                                       ToggleClkDiv/Madd_nextValue_addsub0000_xor<0>
+    SLICE_X61Y35.G4      net (fanout=1)        0.019   ToggleClkDiv/nextValue_addsub0000<0>
+    SLICE_X61Y35.CLK     Tckg        (-Th)    -0.053   ToggleClkDiv/counterValue<1>
+                                                       ToggleClkDiv/nextValue<0>1
+                                                       ToggleClkDiv/counterValue_0
+    -------------------------------------------------  ---------------------------
+    Total                                      1.545ns (1.266ns logic, 0.279ns route)
+                                                       (81.9% logic, 18.1% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point ToggleClkDiv/counterValue_4 (SLICE_X61Y37.G4), 5 paths
+--------------------------------------------------------------------------------
+Slack (hold path):      1.545ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               ToggleClkDiv/counterValue_4 (FF)
+  Destination:          ToggleClkDiv/counterValue_4 (FF)
+  Requirement:          0.000ns
+  Data Path Delay:      1.545ns (Levels of Logic = 2)
+  Clock Path Skew:      0.000ns
+  Source Clock:         sig3_OBUF rising at 10.000ns
+  Destination Clock:    sig3_OBUF rising at 10.000ns
+  Clock Uncertainty:    0.000ns
+
+  Minimum Data Path: ToggleClkDiv/counterValue_4 to ToggleClkDiv/counterValue_4
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X61Y37.YQ      Tcko                  0.501   ToggleClkDiv/counterValue<5>
+                                                       ToggleClkDiv/counterValue_4
+    SLICE_X60Y36.F4      net (fanout=1)        0.260   ToggleClkDiv/counterValue<4>
+    SLICE_X60Y36.X       Topx                  0.712   ToggleClkDiv/nextValue_addsub0000<4>
+                                                       ToggleClkDiv/counterValue<4>_rt
+                                                       ToggleClkDiv/Madd_nextValue_addsub0000_xor<4>
+    SLICE_X61Y37.G4      net (fanout=1)        0.019   ToggleClkDiv/nextValue_addsub0000<4>
+    SLICE_X61Y37.CLK     Tckg        (-Th)    -0.053   ToggleClkDiv/counterValue<5>
+                                                       ToggleClkDiv/nextValue<4>1
+                                                       ToggleClkDiv/counterValue_4
+    -------------------------------------------------  ---------------------------
+    Total                                      1.545ns (1.266ns logic, 0.279ns route)
+                                                       (81.9% logic, 18.1% route)
+
+--------------------------------------------------------------------------------
+Slack (hold path):      2.199ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               ToggleClkDiv/counterValue_3 (FF)
+  Destination:          ToggleClkDiv/counterValue_4 (FF)
+  Requirement:          0.000ns
+  Data Path Delay:      2.248ns (Levels of Logic = 3)
+  Clock Path Skew:      0.049ns (0.115 - 0.066)
+  Source Clock:         sig3_OBUF rising at 10.000ns
+  Destination Clock:    sig3_OBUF rising at 10.000ns
+  Clock Uncertainty:    0.000ns
+
+  Minimum Data Path: ToggleClkDiv/counterValue_3 to ToggleClkDiv/counterValue_4
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X61Y34.XQ      Tcko                  0.501   ToggleClkDiv/counterValue<3>
+                                                       ToggleClkDiv/counterValue_3
+    SLICE_X60Y35.G3      net (fanout=1)        0.283   ToggleClkDiv/counterValue<3>
+    SLICE_X60Y35.COUT    Topcyg                0.763   ToggleClkDiv/nextValue_addsub0000<2>
+                                                       ToggleClkDiv/counterValue<3>_rt
+                                                       ToggleClkDiv/Madd_nextValue_addsub0000_cy<3>
+    SLICE_X60Y36.CIN     net (fanout=1)        0.000   ToggleClkDiv/Madd_nextValue_addsub0000_cy<3>
+    SLICE_X60Y36.X       Tcinx                 0.629   ToggleClkDiv/nextValue_addsub0000<4>
+                                                       ToggleClkDiv/Madd_nextValue_addsub0000_xor<4>
+    SLICE_X61Y37.G4      net (fanout=1)        0.019   ToggleClkDiv/nextValue_addsub0000<4>
+    SLICE_X61Y37.CLK     Tckg        (-Th)    -0.053   ToggleClkDiv/counterValue<5>
+                                                       ToggleClkDiv/nextValue<4>1
+                                                       ToggleClkDiv/counterValue_4
+    -------------------------------------------------  ---------------------------
+    Total                                      2.248ns (1.946ns logic, 0.302ns route)
+                                                       (86.6% logic, 13.4% route)
+
+--------------------------------------------------------------------------------
+Slack (hold path):      2.251ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               ToggleClkDiv/counterValue_0 (FF)
+  Destination:          ToggleClkDiv/counterValue_4 (FF)
+  Requirement:          0.000ns
+  Data Path Delay:      2.300ns (Levels of Logic = 4)
+  Clock Path Skew:      0.049ns (0.115 - 0.066)
+  Source Clock:         sig3_OBUF rising at 10.000ns
+  Destination Clock:    sig3_OBUF rising at 10.000ns
+  Clock Uncertainty:    0.000ns
+
+  Minimum Data Path: ToggleClkDiv/counterValue_0 to ToggleClkDiv/counterValue_4
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X61Y35.YQ      Tcko                  0.501   ToggleClkDiv/counterValue<1>
+                                                       ToggleClkDiv/counterValue_0
+    SLICE_X60Y34.F4      net (fanout=1)        0.260   ToggleClkDiv/counterValue<0>
+    SLICE_X60Y34.COUT    Topcyf                0.755   ToggleClkDiv/nextValue_addsub0000<0>
+                                                       ToggleClkDiv/Madd_nextValue_addsub0000_lut<0>_INV_0
+                                                       ToggleClkDiv/Madd_nextValue_addsub0000_cy<0>
+                                                       ToggleClkDiv/Madd_nextValue_addsub0000_cy<1>
+    SLICE_X60Y35.CIN     net (fanout=1)        0.000   ToggleClkDiv/Madd_nextValue_addsub0000_cy<1>
+    SLICE_X60Y35.COUT    Tbyp                  0.083   ToggleClkDiv/nextValue_addsub0000<2>
+                                                       ToggleClkDiv/Madd_nextValue_addsub0000_cy<2>
+                                                       ToggleClkDiv/Madd_nextValue_addsub0000_cy<3>
+    SLICE_X60Y36.CIN     net (fanout=1)        0.000   ToggleClkDiv/Madd_nextValue_addsub0000_cy<3>
+    SLICE_X60Y36.X       Tcinx                 0.629   ToggleClkDiv/nextValue_addsub0000<4>
+                                                       ToggleClkDiv/Madd_nextValue_addsub0000_xor<4>
+    SLICE_X61Y37.G4      net (fanout=1)        0.019   ToggleClkDiv/nextValue_addsub0000<4>
+    SLICE_X61Y37.CLK     Tckg        (-Th)    -0.053   ToggleClkDiv/counterValue<5>
+                                                       ToggleClkDiv/nextValue<4>1
+                                                       ToggleClkDiv/counterValue_4
+    -------------------------------------------------  ---------------------------
+    Total                                      2.300ns (2.021ns logic, 0.279ns route)
+                                                       (87.9% logic, 12.1% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point ToggleClkDiv/counterValue_8 (SLICE_X61Y39.G4), 9 paths
+--------------------------------------------------------------------------------
+Slack (hold path):      1.546ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               ToggleClkDiv/counterValue_8 (FF)
+  Destination:          ToggleClkDiv/counterValue_8 (FF)
+  Requirement:          0.000ns
+  Data Path Delay:      1.546ns (Levels of Logic = 2)
+  Clock Path Skew:      0.000ns
+  Source Clock:         sig3_OBUF rising at 10.000ns
+  Destination Clock:    sig3_OBUF rising at 10.000ns
+  Clock Uncertainty:    0.000ns
+
+  Minimum Data Path: ToggleClkDiv/counterValue_8 to ToggleClkDiv/counterValue_8
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X61Y39.YQ      Tcko                  0.501   ToggleClkDiv/counterValue<9>
+                                                       ToggleClkDiv/counterValue_8
+    SLICE_X60Y38.F4      net (fanout=2)        0.261   ToggleClkDiv/counterValue<8>
+    SLICE_X60Y38.X       Topx                  0.712   ToggleClkDiv/nextValue_addsub0000<8>
+                                                       ToggleClkDiv/counterValue<8>_rt
+                                                       ToggleClkDiv/Madd_nextValue_addsub0000_xor<8>
+    SLICE_X61Y39.G4      net (fanout=1)        0.019   ToggleClkDiv/nextValue_addsub0000<8>
+    SLICE_X61Y39.CLK     Tckg        (-Th)    -0.053   ToggleClkDiv/counterValue<9>
+                                                       ToggleClkDiv/nextValue<8>1
+                                                       ToggleClkDiv/counterValue_8
+    -------------------------------------------------  ---------------------------
+    Total                                      1.546ns (1.266ns logic, 0.280ns route)
+                                                       (81.9% logic, 18.1% route)
+
+--------------------------------------------------------------------------------
+Slack (hold path):      2.209ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               ToggleClkDiv/counterValue_7 (FF)
+  Destination:          ToggleClkDiv/counterValue_8 (FF)
+  Requirement:          0.000ns
+  Data Path Delay:      2.264ns (Levels of Logic = 3)
+  Clock Path Skew:      0.055ns (0.170 - 0.115)
+  Source Clock:         sig3_OBUF rising at 10.000ns
+  Destination Clock:    sig3_OBUF rising at 10.000ns
+  Clock Uncertainty:    0.000ns
+
+  Minimum Data Path: ToggleClkDiv/counterValue_7 to ToggleClkDiv/counterValue_8
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X61Y36.XQ      Tcko                  0.501   ToggleClkDiv/counterValue<7>
+                                                       ToggleClkDiv/counterValue_7
+    SLICE_X60Y37.G3      net (fanout=2)        0.299   ToggleClkDiv/counterValue<7>
+    SLICE_X60Y37.COUT    Topcyg                0.763   ToggleClkDiv/nextValue_addsub0000<6>
+                                                       ToggleClkDiv/counterValue<7>_rt
+                                                       ToggleClkDiv/Madd_nextValue_addsub0000_cy<7>
+    SLICE_X60Y38.CIN     net (fanout=1)        0.000   ToggleClkDiv/Madd_nextValue_addsub0000_cy<7>
+    SLICE_X60Y38.X       Tcinx                 0.629   ToggleClkDiv/nextValue_addsub0000<8>
+                                                       ToggleClkDiv/Madd_nextValue_addsub0000_xor<8>
+    SLICE_X61Y39.G4      net (fanout=1)        0.019   ToggleClkDiv/nextValue_addsub0000<8>
+    SLICE_X61Y39.CLK     Tckg        (-Th)    -0.053   ToggleClkDiv/counterValue<9>
+                                                       ToggleClkDiv/nextValue<8>1
+                                                       ToggleClkDiv/counterValue_8
+    -------------------------------------------------  ---------------------------
+    Total                                      2.264ns (1.946ns logic, 0.318ns route)
+                                                       (86.0% logic, 14.0% route)
+
+--------------------------------------------------------------------------------
+Slack (hold path):      2.245ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               ToggleClkDiv/counterValue_4 (FF)
+  Destination:          ToggleClkDiv/counterValue_8 (FF)
+  Requirement:          0.000ns
+  Data Path Delay:      2.300ns (Levels of Logic = 4)
+  Clock Path Skew:      0.055ns (0.170 - 0.115)
+  Source Clock:         sig3_OBUF rising at 10.000ns
+  Destination Clock:    sig3_OBUF rising at 10.000ns
+  Clock Uncertainty:    0.000ns
+
+  Minimum Data Path: ToggleClkDiv/counterValue_4 to ToggleClkDiv/counterValue_8
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X61Y37.YQ      Tcko                  0.501   ToggleClkDiv/counterValue<5>
+                                                       ToggleClkDiv/counterValue_4
+    SLICE_X60Y36.F4      net (fanout=1)        0.260   ToggleClkDiv/counterValue<4>
+    SLICE_X60Y36.COUT    Topcyf                0.755   ToggleClkDiv/nextValue_addsub0000<4>
+                                                       ToggleClkDiv/counterValue<4>_rt
+                                                       ToggleClkDiv/Madd_nextValue_addsub0000_cy<4>
+                                                       ToggleClkDiv/Madd_nextValue_addsub0000_cy<5>
+    SLICE_X60Y37.CIN     net (fanout=1)        0.000   ToggleClkDiv/Madd_nextValue_addsub0000_cy<5>
+    SLICE_X60Y37.COUT    Tbyp                  0.083   ToggleClkDiv/nextValue_addsub0000<6>
+                                                       ToggleClkDiv/Madd_nextValue_addsub0000_cy<6>
+                                                       ToggleClkDiv/Madd_nextValue_addsub0000_cy<7>
+    SLICE_X60Y38.CIN     net (fanout=1)        0.000   ToggleClkDiv/Madd_nextValue_addsub0000_cy<7>
+    SLICE_X60Y38.X       Tcinx                 0.629   ToggleClkDiv/nextValue_addsub0000<8>
+                                                       ToggleClkDiv/Madd_nextValue_addsub0000_xor<8>
+    SLICE_X61Y39.G4      net (fanout=1)        0.019   ToggleClkDiv/nextValue_addsub0000<8>
+    SLICE_X61Y39.CLK     Tckg        (-Th)    -0.053   ToggleClkDiv/counterValue<9>
+                                                       ToggleClkDiv/nextValue<8>1
+                                                       ToggleClkDiv/counterValue_8
+    -------------------------------------------------  ---------------------------
+    Total                                      2.300ns (2.021ns logic, 0.279ns route)
+                                                       (87.9% logic, 12.1% route)
+
+--------------------------------------------------------------------------------
+
+Component Switching Limit Checks: NET "sig3_OBUF1" PERIOD = 10 ns HIGH 50%;
+--------------------------------------------------------------------------------
+Slack: 8.634ns (period - (min low pulse limit / (low pulse / period)))
+  Period: 10.000ns
+  Low pulse: 5.000ns
+  Low pulse limit: 0.683ns (Tcl)
+  Physical resource: ToggleClkDiv/counterValue<21>/CLK
+  Logical resource: ToggleClkDiv/counterValue_21/CK
+  Location pin: SLICE_X60Y45.CLK
+  Clock network: sig3_OBUF
+--------------------------------------------------------------------------------
+Slack: 8.634ns (period - (min high pulse limit / (high pulse / period)))
+  Period: 10.000ns
+  High pulse: 5.000ns
+  High pulse limit: 0.683ns (Tch)
+  Physical resource: ToggleClkDiv/counterValue<21>/CLK
+  Logical resource: ToggleClkDiv/counterValue_21/CK
+  Location pin: SLICE_X60Y45.CLK
+  Clock network: sig3_OBUF
+--------------------------------------------------------------------------------
+Slack: 8.634ns (period - min period limit)
+  Period: 10.000ns
+  Min period limit: 1.366ns (732.064MHz) (Tcp)
+  Physical resource: ToggleClkDiv/counterValue<21>/CLK
+  Logical resource: ToggleClkDiv/counterValue_21/CK
+  Location pin: SLICE_X60Y45.CLK
+  Clock network: sig3_OBUF
+--------------------------------------------------------------------------------
+
+
+All constraints were met.
+
+
+Data Sheet report:
+-----------------
+All values displayed in nanoseconds (ns)
+
+Clock to Setup on destination clock clk100
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk100         |    6.169|         |         |         |
+---------------+---------+---------+---------+---------+
+
+
+Timing summary:
+---------------
+
+Timing errors: 0  Score: 0  (Setup/Max: 0, Hold: 0)
+
+Constraints cover 621 paths, 0 nets, and 110 connections
+
+Design statistics:
+   Minimum period:   6.169ns{1}   (Maximum frequency: 162.101MHz)
+
+
+------------------------------------Footnotes-----------------------------------
+1)  The minimum period statistic assumes all single cycle delays.
+
+Analysis completed Thu Dec 02 13:31:06 2010 
+--------------------------------------------------------------------------------
+
+Trace Settings:
+-------------------------
+Trace Settings 
+
+Peak Memory Usage: 150 MB
+
+
+

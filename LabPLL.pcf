@@ -1,0 +1,15 @@
+//! **************************************************************************
+// Written by: Map M.63c on Thu Dec 02 13:30:52 2010
+//! **************************************************************************
+
+SCHEMATIC START;
+COMP "lsdp" LOCATE = SITE "N15" LEVEL 1;
+COMP "clk100" LOCATE = SITE "T9" LEVEL 1;
+COMP "swrst" LOCATE = SITE "D15" LEVEL 1;
+COMP "sig1" LOCATE = SITE "E15" LEVEL 1;
+COMP "sig3" LOCATE = SITE "E14" LEVEL 1;
+COMP "fceb" LOCATE = SITE "R4" LEVEL 1;
+NET "sig3_OBUF1" BEL "sig3_OBUF_BUFG.GCLKMUX" USELOCALCONNECT;
+NET "sig3_OBUF1" PERIOD = 10 ns HIGH 50%;
+SCHEMATIC END;
+

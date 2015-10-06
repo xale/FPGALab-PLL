@@ -1,0 +1,171 @@
+Release 12.2 par M.63c (nt64)
+Copyright (c) 1995-2010 Xilinx, Inc.  All rights reserved.
+
+KATANA-WIN::  Thu Dec 02 13:30:53 2010
+
+par -w -intstyle ise -ol high -t 1 LabPLL_map.ncd LabPLL.ncd LabPLL.pcf 
+
+
+Constraints file: LabPLL.pcf.
+Loading device for application Rf_Device from file '3s1000.nph' in environment C:\Xilinx\12.2\ISE_DS\ISE\.
+   "LabPLL" is an NCD, version 3.2, device xc3s1000, package ft256, speed -5
+
+Initializing temperature to 85.000 Celsius. (default - Range: 0.000 to 85.000 Celsius)
+Initializing voltage to 1.140 Volts. (default - Range: 1.140 to 1.260 Volts)
+
+
+Device speed data version:  "PRODUCTION 1.39 2010-06-22".
+
+
+Device Utilization Summary:
+
+   Number of BUFGMUXs                        1 out of 8      12%
+   Number of External IOBs                   6 out of 173     3%
+      Number of LOCed IOBs                   6 out of 6     100%
+
+   Number of Slices                         29 out of 7680    1%
+      Number of SLICEMs                      0 out of 3840    0%
+
+
+
+Overall effort level (-ol):   High 
+Placer effort level (-pl):    High 
+Placer cost table entry (-t): 1
+Router effort level (-rl):    High 
+
+Starting initial Timing Analysis.  REAL time: 1 secs 
+Finished initial Timing Analysis.  REAL time: 1 secs 
+
+WARNING:Par:288 - The signal sig1_IBUF has no load.  PAR will not attempt to route this signal.
+
+Starting Placer
+Total REAL time at the beginning of Placer: 1 secs 
+Total CPU  time at the beginning of Placer: 1 secs 
+
+Phase 1.1  Initial Placement Analysis
+Phase 1.1  Initial Placement Analysis (Checksum:91dfde6) REAL time: 1 secs 
+
+Phase 2.7  Design Feasibility Check
+Phase 2.7  Design Feasibility Check (Checksum:91dfde6) REAL time: 1 secs 
+
+Phase 3.31  Local Placement Optimization
+Phase 3.31  Local Placement Optimization (Checksum:91dfde6) REAL time: 1 secs 
+
+Phase 4.2  Initial Clock and IO Placement
+
+Phase 4.2  Initial Clock and IO Placement (Checksum:40182536) REAL time: 1 secs 
+
+Phase 5.36  Local Placement Optimization
+Phase 5.36  Local Placement Optimization (Checksum:40182536) REAL time: 1 secs 
+
+Phase 6.8  Global Placement
+..
+..
+Phase 6.8  Global Placement (Checksum:3b2ea8f) REAL time: 8 secs 
+
+Phase 7.5  Local Placement Optimization
+Phase 7.5  Local Placement Optimization (Checksum:3b2ea8f) REAL time: 8 secs 
+
+Phase 8.18  Placement Optimization
+Phase 8.18  Placement Optimization (Checksum:eb241a94) REAL time: 8 secs 
+
+Phase 9.5  Local Placement Optimization
+Phase 9.5  Local Placement Optimization (Checksum:eb241a94) REAL time: 8 secs 
+
+Total REAL time to Placer completion: 8 secs 
+Total CPU  time to Placer completion: 8 secs 
+Writing design to file LabPLL.ncd
+
+
+
+Starting Router
+
+
+Phase  1  : 131 unrouted;      REAL time: 8 secs 
+
+Phase  2  : 118 unrouted;      REAL time: 8 secs 
+
+Phase  3  : 2 unrouted;      REAL time: 8 secs 
+
+Phase  4  : 2 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 9 secs 
+
+Phase  5  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 9 secs 
+
+Updating file: LabPLL.ncd with current fully routed design.
+
+Phase  6  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 9 secs 
+
+Phase  7  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 9 secs 
+
+Phase  8  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 9 secs 
+
+Total REAL time to Router completion: 9 secs 
+Total CPU time to Router completion: 9 secs 
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+Generating "PAR" statistics.
+
+**************************
+Generating Clock Report
+**************************
+
++---------------------+--------------+------+------+------------+-------------+
+|        Clock Net    |   Resource   |Locked|Fanout|Net Skew(ns)|Max Delay(ns)|
++---------------------+--------------+------+------+------------+-------------+
+|           sig3_OBUF |      BUFGMUX0| No   |   12 |  0.194     |  0.858      |
++---------------------+--------------+------+------+------------+-------------+
+| ToggleClkDiv/clkOut |         Local|      |    1 |  0.000     |  1.252      |
++---------------------+--------------+------+------+------------+-------------+
+
+* Net Skew is the difference between the minimum and maximum routing
+only delays for the net. Note this is different from Clock Skew which
+is reported in TRCE timing report. Clock Skew is the difference between
+the minimum and maximum path delays which includes logic delays.
+
+Timing Score: 0 (Setup: 0, Hold: 0, Component Switching Limit: 0)
+
+Asterisk (*) preceding a constraint indicates it was not met.
+   This may be due to a setup or hold violation.
+
+----------------------------------------------------------------------------------------------------------
+  Constraint                                |    Check    | Worst Case |  Best Case | Timing |   Timing   
+                                            |             |    Slack   | Achievable | Errors |    Score   
+----------------------------------------------------------------------------------------------------------
+  NET "sig3_OBUF1" PERIOD = 10 ns HIGH 50%  | SETUP       |     3.831ns|     6.169ns|       0|           0
+                                            | HOLD        |     1.545ns|            |       0|           0
+----------------------------------------------------------------------------------------------------------
+
+
+All constraints were met.
+
+
+Generating Pad Report.
+
+All signals are completely routed.
+
+WARNING:Par:283 - There are 1 loadless signals in this design. This design will cause Bitgen to issue DRC warnings.
+
+Total REAL time to PAR completion: 10 secs 
+Total CPU time to PAR completion: 10 secs 
+
+Peak Memory Usage:  244 MB
+
+Placement: Completed - No errors found.
+Routing: Completed - No errors found.
+Timing: Completed - No errors found.
+
+Number of error messages: 0
+Number of warning messages: 3
+Number of info messages: 0
+
+Writing design to file LabPLL.ncd
+
+
+
+PAR done!
